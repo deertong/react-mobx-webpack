@@ -5,7 +5,7 @@ const NotFound = lazy(() => import('../components/not-found/NotFound'));
 const routes = [
   {
     path: '/index',
-    exact: true,
+    exact: false,
     component: lazy(() => import('../pages/index/index.jsx'))
   },
   {
