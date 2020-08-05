@@ -1,0 +1,30 @@
+{
+  "id": "1852767",
+  "name": "deerLife",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15443477",
+      "name": "船舵",
+      "font_class": "chuanduo-02",
+      "unicode": "e73e",
+      "unicode_decimal": 59198
+    },
+    {
+      "icon_id": "1167183",
+      "name": "收入",
+      "font_class": "shouru",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "10069717",
+      "name": "支出",
+      "font_class": "zhichu",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    }
+  ]
+}
