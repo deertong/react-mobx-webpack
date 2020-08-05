@@ -1,23 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button, List, ListItem, ListItemText } from '@material-ui/core';
-const About = (props) => {
-    return (
-        <div id="about">
-            <Button variant="outlined" color="primary" onClick={handleGetList}>
-                查看列表
-            </Button>
-            <div className='list-box'>
-                <List component="nav" aria-label="secondary mailbox folders">
-                    {props.list&&props.list.map((value) => (
-                        <ListItem button key={value.title}>
-                            <ListItemText primary={value.title} />
-                        </ListItem>
-                    ))}
-                </List>
+import { observer, inject } from 'mobx-react'
+import './style.scss'
+@inject('testStore')
+@observer
+class Lists extends Component {
+    handleGetList = () => {
+        const {testStore} =this.props
+        testStore.getList({name:'查看'})
+    }
+    render() {
+        const { list } = this.props.testStore
+        return (
+            <div id="about">
+                <Button variant="outlined" color="primary" onClick={this.handleGetList}>查看列表</Button>
+                <div className='list-box'>
+                    <List component="nav" aria-label="secondary mailbox folders">
+                        {list && list.map((value) => (
+                            <ListItem button key={value.title}>
+                                <ListItemText primary={value.title} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </div>
             </div>
-
-        </div>
-    )
+        )
+    }
 }
 
-export default About
+export default Lists

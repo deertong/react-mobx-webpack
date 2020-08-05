@@ -6,6 +6,6 @@ export default function dynamic(compPromise) {
     loader: () => {
       return compPromise;
     },
-    loading: Loading
+    loading: Loading,
   });
 }

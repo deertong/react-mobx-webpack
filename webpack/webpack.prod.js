@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = merge(webpackDll, {
     mode: 'production',
@@ -74,6 +75,11 @@ module.exports = merge(webpackDll, {
                 preset: ['default', { discardComments: { removeAll: true } }],
             },
             canPrint: true
+        }),
+               new BundleAnalyzerPlugin({
+            analyzerMode: process.env.ANALYZ ? 'server' : 'disabled',
+            generateStatsFile: true,
+            statsOptions: { source: false }
         })
     ]
 })

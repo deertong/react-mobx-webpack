@@ -1,7 +1,6 @@
 const path = require('path')
 const WebpackBar = require('webpackbar');
 const webpack = require('webpack')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const config = {
     entry: {
         app: './index.js',
@@ -56,11 +55,6 @@ const config = {
         new webpack.DefinePlugin({
             "ENV": JSON.stringify(process.env.NODE_ENV),
             "REPLACEURL": process.env.ISBUILD == 1
-        }),
-        new BundleAnalyzerPlugin({
-            analyzerMode: process.env.ANALYZ ? 'server' : 'disabled',
-            generateStatsFile: true,
-            statsOptions: { source: false }
         })
     ]
 }
