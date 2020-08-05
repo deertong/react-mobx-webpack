@@ -1,4 +1,4 @@
-# react-webpack
+# react-mobx-webpack
 使用webpack 搭建react 脚手架
 ```
 npm i
