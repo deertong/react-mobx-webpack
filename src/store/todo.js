@@ -1,6 +1,9 @@
-import { observable, action, runInAction } from 'mobx'
+import { observable, action, runInAction,makeAutoObservable } from 'mobx'
 
 class todo {
+  constructor(props){
+    makeAutoObservable(this)
+  }
   @observable todoList = []
   @action.bound
   setList(param) {
