@@ -1,98 +1,64 @@
 {
-  "name": "react-redux-tmp",
+  "name": "react-webpack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "better-npm-run start:dev",
-    "start-prod": "better-npm-run start:prod",
-    "build-dev": "better-npm-run build:dev",
-    "build-prod": "better-npm-run build:prod",
-    "analyz": "better-npm-run build:analyz"
+    "start": "cross-env NODE_ENV=development PORT=9000 webpack serve",
+    "build": "cross-env NODE_ENV=production webpack",
+    "analyz": "cross-env NODE_ENV=production ANALYZ=1 webpack"
   },
-  "betterScripts": {
-    "start:dev": {
-      "command": "webpack-dev-server",
-      "env": {
-        "NODE_ENV": "development",
-        "PORT": 5000,
-        "ISBUILD": 0
-      }
-    },
-    "start:prod": {
-      "command": "webpack-dev-server",
-      "env": {
-        "NODE_ENV": "production",
-        "PORT": 5000,
-        "ISBUILD": 0
-      }
-    },
-    "build:dev": {
-      "command": "webpack",
-      "env": {
-        "NODE_ENV": "development",
-        "ISBUILD": 1
-      }
-    },
-    "build:prod": {
-      "command": "webpack",
-      "env": {
-        "NODE_ENV": "production",
-        "ISBUILD": 1
-      }
-    },
-    "build:analyz": {
-      "command": "webpack",
-      "env": {
-        "NODE_ENV": "production",
-        "ISBUILD": 1,
-        "ANALYZ": 1
-      }
-    }
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "axios": "^0.19.2",
-    "history": "^5.0.0",
-    "mobx": "^5.15.4",
-    "mobx-react": "^6.2.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-loadable": "^5.5.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.4",
+    "axios": "^0.27.2",
+    "connected-react-router": "^6.9.3",
+    "history": "5.3.0",
+    "mobx": "^6.7.0",
+    "mobx-react": "^7.6.0",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-proposal-decorators": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/runtime-corejs2": "^7.10.5",
-    "babel-loader": "^8.1.0",
-    "better-npm-run": "^0.1.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.6.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^6.0.0",
-    "html-webpack-plugin": "^4.3.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.14.1",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^9.0.2",
-    "style-loader": "^1.2.1",
-    "terser-webpack-plugin": "^3.0.7",
-    "url-loader": "^4.1.0",
-    "webpack": "^4.43.0",
-    "webpack-bundle-analyzer": "^3.8.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.0.9",
-    "webpackbar": "^4.0.0"
+    "@babel/core": "^7.19.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.19.0",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.18.6",
+    "@babel/plugin-transform-object-assign": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.18.10",
+    "@babel/preset-env": "^7.19.0",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/runtime-corejs2": "^7.19.0",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "less": "^4.1.3",
+    "less-loader": "^11.0.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "postcss-loader": "^7.0.1",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.6",
+    "thread-loader": "^3.0.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.74.0",
+    "webpack-bundle-analyzer": "^4.6.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.0",
+    "webpack-merge": "^5.8.0",
+    "webpackbar": "^5.0.2"
   }
 }

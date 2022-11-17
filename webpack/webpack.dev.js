@@ -1,10 +1,10 @@
 const { merge } = require('webpack-merge');
 const path = require('path')
-const webpackDll = require('./webpack.dll');
+const webpackCommon = require('./webpack.common');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const configProxy = require('./config.proxy.dev')
+const proxyDev = require('./proxy.dev')
 const port = process.env.PORT
-module.exports = merge(webpackDll, {
+module.exports = merge(webpackCommon, {
     mode: 'development',
     devtool: 'source-map',
     optimization: {
@@ -33,29 +33,33 @@ module.exports = merge(webpackDll, {
                 ]
             },
             {
-                test: /\.scss$/,
+                test: /\.less$/,
                 use: [
                     'style-loader',
                     'css-loader',
-                    'sass-loader'
+                    'less-loader'
                 ]
             }
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({ //生成html文件
-            title: 'deertong',
+            title: 'react-webpack',
             template: './public/index.html',
             chunks: ['app', 'vendor']
         })
     ],
     devServer: { //测试服务启动
-        port,
-        contentBase: path.resolve(__dirname, 'dist'),
+        port: port,
+        static: path.resolve(__dirname, 'dist'),
+        // contentBase: path.resolve(__dirname, 'dist'), // 告诉服务器从哪个目录中提供内容。只有在你想要提供静态文件时才需要
         compress: true,
-        overlay: true,
-        quiet: true,
+        client: {
+            overlay: true, // 当出现编译器错误或警告时，在浏览器中显示全屏覆盖层。默认禁用
+            // progress: true, // 浏览器控制台出现编译进度
+        },
+        // open: true, // 启动时打开浏览器
         historyApiFallback: true,
-        proxy: configProxy
+        proxy: proxyDev
     }
 })

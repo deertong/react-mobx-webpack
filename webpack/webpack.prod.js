@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge');
-const webpackDll = require('./webpack.dll');
+const webpackCommon = require('./webpack.common');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -7,7 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-module.exports = merge(webpackDll, {
+module.exports = merge(webpackCommon, {
     mode: 'production',
     optimization: {
         minimize: true,
@@ -43,7 +43,7 @@ module.exports = merge(webpackDll, {
                 ]
             },
             {
-                test: /\.scss$/,
+                test: /\.less$/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -53,15 +53,15 @@ module.exports = merge(webpackDll, {
 
                     },
                     'css-loader',
-                    'sass-loader'
+                    'less-loader'
                 ]
-            },
+            }
         ],
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({ //生成html文件
-            title: 'deertong',
+            title: 'react-webpack',
             template: './public/index.html',
             chunks: ['app', 'vendor']
         }),
@@ -76,7 +76,7 @@ module.exports = merge(webpackDll, {
             },
             canPrint: true
         }),
-               new BundleAnalyzerPlugin({
+        new BundleAnalyzerPlugin({
             analyzerMode: process.env.ANALYZ ? 'server' : 'disabled',
             generateStatsFile: true,
             statsOptions: { source: false }
