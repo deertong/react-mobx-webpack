@@ -1,7 +1,7 @@
 import { observable, action, runInAction,makeAutoObservable } from 'mobx'
 
 class todo {
-  constructor(props){
+  constructor(){
     makeAutoObservable(this)
   }
   @observable todoList = []

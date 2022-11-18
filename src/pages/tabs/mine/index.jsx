@@ -16,7 +16,7 @@ export default function index() {
             deertong
           </Typography>
           <Typography variant="body2" color="text.secondary">
-              使用 webpack5 搭建的react，rematch，脚手架模板。该项目实现了一个简单的todoList,数据状态是使用基于redux实现的rematch这个库。
+              使用 webpack5，react,mobx搭建的前端快速开发项目
           </Typography>
         </CardContent>
       </Card>
